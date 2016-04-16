@@ -1,27 +1,70 @@
-# Laravel PHP Framework
+# URL Notes
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This is tiny web program share url with co-workers.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+You can use scriptlet to share url.
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Install
 
-## Official Documentation
+This use Laravel framework so you should indication of Laravel.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+You should use composer, npm of nodejs and gulp of nodejs program.
 
-## Contributing
+Each program, I don't descript. You can see individual tutorial on site of each lib.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+If you have all dependencies, run below commands.
 
-## Security Vulnerabilities
+<pre>
+composer install
+npm install
+gulp
+</pre>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+And, you set .env file.
 
-## License
+<pre>
+cp .env.example .env
+</pre>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+You should fill database and email server infomation. Email server's `MAIL_DRIVER` will be filled with `log`, `smtp`, etc... Full list is on Laravel Document Mail section.
+
+After fill database information, run below.
+
+<pre>
+php artisan migrate
+</pre>
+
+You can run the program, type this command.
+
+<pre>
+php artisan serve
+</pre>
+
+
+## Migrate from Wunderlist
+
+Our team use wunderlist to share url. So first of our task is migrate the data on Wunderlist. Wunderlist support exporting. You can see it Account section.
+
+After export, you can import the items to URL Notes by artisan. By the way, you should fill `$user_match` array on `app\Console\Commands\ImportFromWunderlist.php` line 15. the format is there by comments. If you complete it, run a command.
+
+<pre>
+php artisan import:wunderlist
+</pre>
+
+
+## Test
+
+Lalavel provide default test set. We use it. So, if you installed phpunit, you can test simply by type `phpunit`.
+
+<pre>
+$ phpunit
+
+PHPUnit 5.2.12 by Sebastian Bergmann and contributors.
+
+...                                                                3 / 3 (100%)
+
+Time: 492 ms, Memory: 22.25Mb
+
+OK (3 tests, 27 assertions)
+</pre>
+
