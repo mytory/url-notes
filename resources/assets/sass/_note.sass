@@ -1,0 +1,34 @@
+.list-note
+  height: 11em
+  @media all and (max-width: 600px)
+    height: auto
+.list-note__title
+  font-size: $font-size-base * 1.1
+  margin-top: 0
+
+.list-note__ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+  line-height: 1.3
+
+.list-note__ellipsis--none-mobile
+  @media all and (max-width: 600px)
+    white-space: normal
+    word-break: break-all
+    overflow: visible
+    text-overflow: clip
+
+.page-header--no-margin-top
+
+.view-note-content
+  h1
+    @extend .h3
+  h2
+    @extend .h4
+  h3
+    @extend .h5
+  h6
+    @extend .h6
+  h6
+    @extend .h6
