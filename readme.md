@@ -2,7 +2,13 @@
 
 This is tiny web program share url with co-workers.
 
-You can use scriptlet to share url.
+## Features
+
+- Shere url note with description and tags.
+- Comment to note.
+- Notify with email(Note and comment).
+- Scriptlet to share url.
+
 
 ## Install
 
