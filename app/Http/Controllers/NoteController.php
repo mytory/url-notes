@@ -157,7 +157,7 @@ class NoteController extends Controller {
 
         // 메일 발송
         if($type == '생성'){
-            $users = User::whereRaw('1 = 1')->get();
+            $users = User::where('id', "!=", Auth::user()->id)->get();
 
             $Parsedown = new \Parsedown();
             $params = [
