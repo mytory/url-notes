@@ -24,6 +24,8 @@
 use App\Attachment;
 
 Route::group(['middleware' => ['web']], function () {
+
+
     Route::auth();
 
     Route::get('/', function () {
@@ -35,6 +37,8 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('/tags', 'NoteController@tagList');
 
         Route::get('/notes/{page?}', 'NoteController@notes');
+        Route::get('/notes/user/{user?}', 'NoteController@notesByUser');
+
         Route::get('/note/form/{note?}', 'NoteController@form');
         Route::get('/note/delete/{note}', 'NoteController@delete');
         Route::get('/note/{note}', 'NoteController@note');

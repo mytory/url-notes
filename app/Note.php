@@ -31,11 +31,21 @@ class Note extends Model
         return url('note/' . $this->id);
     }
 
+    /**
+     * $note = Note::find(1);
+     * echo $note->user->name;
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function user()
     {
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * $note = Note::find(1);
+     * $comments = $note->comments()->get();
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
         return $this->hasMany('App\Comment');

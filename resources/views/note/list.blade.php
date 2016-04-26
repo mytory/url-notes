@@ -35,7 +35,8 @@
                         <p class="list-note__ellipsis  text-muted  small">{{ strip_tags($note->content) }}</p>
                         <p class="text-right">
                             <small>
-                                {{ $note->user->name  }} {{ $note->created_at  }} <a href="{{ url('note/form/' . $note->id) }}">수정</a>
+                                <a href="{{ url('notes/user/' . $note->user->id) }}">{{ $note->user->name  }}</a>
+                                {{ $note->created_at  }} <a href="{{ url('note/form/' . $note->id) }}">수정</a>
                             </small>
                         </p>
                     </div>

@@ -37,6 +37,20 @@ class NoteController extends Controller {
         ]);
     }
 
+    function notesByUser(User $user, Request $request) {
+        $query = Note::orderBy('notes.created_at', 'DESC')
+            ->join('users', 'notes.user_id', '=', 'users.id')
+            ->whereUserId($user->id)
+            ->select(['notes.*', 'users.name']);
+        $page_title = 'URL Note 목록 : ' . $user->name;
+
+        return view('note.list', [
+            'notes' => $query->paginate(20),
+            'title' => $page_title,
+            'page' => $request->get('page'),
+        ]);
+    }
+
     function notesByTag($tag_name, Request $request){
         $query = Note::orderBy('notes.created_at', 'DESC')
             ->join('tags', 'notes.id', '=', 'tags.note_id')
