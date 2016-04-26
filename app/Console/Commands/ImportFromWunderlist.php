@@ -54,7 +54,7 @@ class ImportFromWunderlist extends Command
      */
     public function handle()
     {
-        if(empty($user_match)){
+        if(empty($this->user_match)){
             $this->info('You should fill $user_match array on line 15 in this file(' . __DIR__ . DIRECTORY_SEPARATOR . __FILE__ . ').');
             return false;
         }
