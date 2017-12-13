@@ -18,9 +18,9 @@ $scriptlet = preg_replace('/[\n\r]*/', '', $scriptlet);
         <div class="row">
             <div class="col-xs-12">
                 <p>아래 스크립트를 즐겨찾기에 등록하시면 됩니다.</p>
-                <p><textarea readonly onclick="this.select();" rows="5" class="form-control">javascript:{!! urlencode($scriptlet) !!}</textarea></p>
+                <p><textarea readonly onclick="this.select();" rows="5" class="form-control">javascript:{!! str_replace(" ", "%20", $scriptlet) !!}</textarea></p>
                 <p>혹은 아래 버튼을 즐겨찾기 바에 들어다 놓으세요.</p>
-                <a href="javascript:{!! urlencode($scriptlet) !!}" class="btn btn-default">URL 노트</a>
+                <a href="javascript:{!! str_replace(" ", "%20", $scriptlet) !!}" class="btn btn-default">URL 노트</a>
            </div>
         </div>
     </div>
