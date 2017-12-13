@@ -20,7 +20,7 @@ $scriptlet = preg_replace('/[\n\r]*/', '', $scriptlet);
                 <p>아래 스크립트를 즐겨찾기에 등록하시면 됩니다.</p>
                 <p><textarea readonly onclick="this.select();" rows="5" class="form-control">javascript:{{ $scriptlet }}</textarea></p>
                 <p>혹은 아래 버튼을 즐겨찾기 바에 들어다 놓으세요.</p>
-                <a href="javascript:{{ $scriptlet }}" class="btn btn-default">URL 노트</a>
+                <a href="javascript:{!! urlencode($scriptlet) !!}" class="btn btn-default">URL 노트</a>
            </div>
         </div>
     </div>
