@@ -170,23 +170,23 @@ class NoteController extends Controller {
         }
 
         // 메일 발송
-        if($type == '생성'){
-            $users = User::where('id', "!=", Auth::user()->id)->get();
-
-            $Parsedown = new \Parsedown();
-            $params = [
-                'note' => $note,
-                'type' => $type,
-                'tag_names_string' => implode(', ', $request->get('tag_names')),
-                'content' => $Parsedown->text($note->content),
-            ];
-            Mail::send('note.note-email', $params, function($message) use ($note, $users, $type)
-            {
-                foreach ($users as $user) {
-                    $message->to($user->email, $user->name)->subject("[URL 노트 $type] $note->title");
-                };
-            });
-        }
+        // if($type == '생성'){
+        //     $users = User::where('id', "!=", Auth::user()->id)->get();
+        //
+        //     $Parsedown = new \Parsedown();
+        //     $params = [
+        //         'note' => $note,
+        //         'type' => $type,
+        //         'tag_names_string' => implode(', ', $request->get('tag_names')),
+        //         'content' => $Parsedown->text($note->content),
+        //     ];
+        //     Mail::send('note.note-email', $params, function($message) use ($note, $users, $type)
+        //     {
+        //         foreach ($users as $user) {
+        //             $message->to($user->email, $user->name)->subject("[URL 노트 $type] $note->title");
+        //         };
+        //     });
+        // }
 
         return redirect('note/' . $note->id);
     }
